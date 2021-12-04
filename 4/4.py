@@ -27,10 +27,10 @@ def get_nums_and_boards():
 
 def check_winner(board):
     for i in range(5):
-        if sum(board[i]) == 0:
+        if sum(board[i]) == -5:
             return True
 
-        if board[0][i] + board[1][i] + board[2][i] + board[3][i] + board[4][i] == 0:
+        if board[0][i] + board[1][i] + board[2][i] + board[3][i] + board[4][i] == -5:
             return True
 
     return False
@@ -44,13 +44,13 @@ for num in generated_nums:
         for row in board:
             for index in range(len(row)):
                 if row[index] == num:
-                    row[index] = 0
+                    row[index] = -1
 
         if check_winner(board):
             sum_of_unmarked = 0
             for row in board:
                 for index in range(len(row)):
-                    if row[index] != 0:
+                    if row[index] != -1:
                         sum_of_unmarked += row[index]
             print(sum_of_unmarked * num)
             break
@@ -65,7 +65,7 @@ for num in generated_nums:
         for row in boards[bd_index]:
             for index in range(len(row)):
                 if row[index] == num:
-                    row[index] = 0
+                    row[index] = -1
 
         if check_winner(boards[bd_index]):
             if len(boards) != 1:
@@ -75,7 +75,7 @@ for num in generated_nums:
                 sum_of_unmarked = 0
                 for row in boards[bd_index]:
                     for index in range(len(row)):
-                        if row[index] != 0:
+                        if row[index] != -1:
                             sum_of_unmarked += row[index]
                 print(sum_of_unmarked * num)
                 break
