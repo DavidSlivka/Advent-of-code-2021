@@ -14,13 +14,15 @@ for crab in crab_list:
 
 print(fuel_used)
 
+horizontal_pos = int(np.mean(crab_list))
+fuel_used = 1000000000
 
-horizontal_pos = int(round(np.mean(crab_list)))-1
-fuel_used = 0
+for p in range(horizontal_pos - 1, horizontal_pos + 2):
+    s = 0
+    for crab in crab_list:
+        s += abs(crab - p) * (abs(crab - p) + 1) // 2
 
-for crab in crab_list:
-    move = abs(crab - horizontal_pos)
-    for i in range(1, move + 1):
-        fuel_used += i
+    if s < fuel_used:
+        fuel_used = s
 
 print(fuel_used)
